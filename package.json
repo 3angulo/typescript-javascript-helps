@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "TypeScript - JavaScript that helps",
   "scripts": {
-    "tsc": "./node_modules/.bin/tsc -w"
+    "start": "./node_modules/.bin/tsc -w"
   },
   "author": "Elkin Angulo",
   "license": "MIT",
