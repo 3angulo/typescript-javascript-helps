@@ -3,14 +3,55 @@
   <head>
     <meta charset="UTF-8">
     <title>TypeScript - JavaScript that helps</title>
+
+    <style>
+      .hidden {
+        display: none;
+      }
+      button {
+        cursor: pointer;
+        padding: 10px;
+        border: solid 1px #ececec;
+        border-radius: 3px;
+      }
+      button:focus {
+        outline: none;
+      }
+
+      #select-bulbasaur {
+        background-color: #94C9B1;
+        border-color: #40c789;
+      }
+      #select-charmander {
+        background-color: #ECB486;
+        border-color: #f28d3e;
+      }
+      #select-squirtle {
+        background-color: #93C6D5;
+        border-color: #3bafd1;
+      }
+
+      #selected-pkm-wrapper img {
+        padding: 20px;
+      }
+    </style>
   </head>
   <body>
     <div>
       <h2>Pick Your Favorite Pokémon!</h2>
+
       <button id="select-bulbasaur">Bulbasaur</button>
       <button id="select-charmander">Charmander</button>
       <button id="select-squirtle">Squirtle</button>
-      <div id="selected"></div>
+
+      <!-- Selected Pokémon information -->
+      <div id="selected-pkm-wrapper" class="hidden">
+        <img id="pkm-picture" src="" />
+        <div><strong span id="pkm-name"></strong></div>
+        <div>Type: <span id="pkm-type"></span></div>
+        <div>Attack: <span id="pkm-attack"></span></div>
+        <div>Defense: <span id="pkm-defense"></span></div>
+      </div>
     </div>
     <script src="dist/index.js"></script>
   </body>

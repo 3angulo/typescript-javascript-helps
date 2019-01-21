@@ -4,8 +4,7 @@ interface IPokemon {
     readonly attack: number;
     readonly defense: number;
 
-    sayHi(): string;
-    profile(): string;
+    getPictureURL: () => string;
 }
 
 class Pokemon implements IPokemon {
@@ -21,17 +20,8 @@ class Pokemon implements IPokemon {
         this.defense = this.randomStat();
     }
 
-    public sayHi(): string {
-        return `${this.name}!`;
-    }
-
-    public profile(): string {
-        return `
-            Name: ${this.name}
-            Type: ${this.type}
-            Attack: ${this.attack}
-            Defense: ${this.defense}
-        `;
+    public getPictureURL(): string {
+        return `dist/images/${this.name}.jpg`;
     }
 
     private randomStat(): number {
@@ -39,22 +29,33 @@ class Pokemon implements IPokemon {
     }
 }
 
-// Bulbasaur
-document.getElementById('select-bulbasaur').onclick = (e) => {
+// Update selected Pokémon
+function select(name = '', type = '') {
+    const pkm = new Pokemon(name, type);
+    const selectedPkmWrapper = document.getElementById('selected-pkm-wrapper');
+
+    selectedPkmWrapper.classList.add('hidden');
+
+    (<HTMLImageElement>document.getElementById('pkm-picture')).src = pkm.getPictureURL();
+    document.getElementById('pkm-name').innerText = pkm.name;
+    document.getElementById('pkm-type').innerText = pkm.type;
+    document.getElementById('pkm-attack').innerText = pkm.attack.toString();
+    document.getElementById('pkm-defense').innerText = pkm.defense.toString();
+
+    selectedPkmWrapper.classList.remove('hidden');
+}
+
+/**
+ * Attach events
+ */
+document.getElementById('select-bulbasaur').onclick = () => {
     select('Bulbasaur', 'Grass, Poison');
 };
 
-// Charmander
-document.getElementById('select-charmander').onclick = (e) => {
+document.getElementById('select-charmander').onclick = () => {
     select('Charmander', 'Fire');
 };
 
-// Squirtle
-document.getElementById('select-squirtle').onclick = (e) => {
+document.getElementById('select-squirtle').onclick = () => {
     select('Squirtle', 'Water');
 };
-
-function select(name = '', type = '') {
-    const pkm = new Pokemon(name, type);
-    document.getElementById('selected').innerText = pkm.profile();
-}
