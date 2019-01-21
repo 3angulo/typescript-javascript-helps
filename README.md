@@ -2,6 +2,8 @@
 
 ## Setup
 
+Once you have cloned this repository
+
 ```
 $ cd typescript-javascript-helps
 
